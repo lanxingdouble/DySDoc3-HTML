@@ -1,0 +1,224 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DySDoc3</title>
+</head>
+<body>
+
+<script id="id=inheritance_script" type="text/x-jquery-tmpl">
+  <li>
+    Langs:
+    <ul>{{each a}}<li>${$index + 1}: <label>${$value}. </label></li>{{/each}}
+    </ul>
+  </li>
+</script>
+
+<script id="method_summary_tbody_script" type="text/x-jquery-tmpl">
+    <tr class="altColor">
+        <td class="colFirst"><code>${return_type}</code></td>
+        <td class="colLast"><code><strong>${method_name}</strong></code>
+        <div class="block">${method_des}</div>
+
+        </td>
+    </tr>
+</script>
+
+<script id="method_detail_script" type="text/x-jquery-tmpl">
+    <ul class="blockList">
+       <li class="blockList" >
+       <h4>${method_name}</h4>
+        <ul class="blockList">
+            <li class="blockList">   
+                <pre>${class_define}</pre>
+                <div class="block">${class_define}</div>
+                <dl>
+                    <dt><span class="returnLabel">Returns:</span></dt>
+                    <dd>${return_type}</dd>
+                    <dt><span class="seeLabel">See Also:</span></dt>
+                    {{if see_also.length >= 1}}
+                        ${see_also.join('; ')}
+                    {{else}}
+                        null
+                    {{/if}}
+                     <dt><span class="seeLabel">Related Post Url:</span></dt>
+                    {{if related_post_url.length >= 1}}
+                        ${related_post_url.join('; ')}
+                    {{else}}
+                        null
+                    {{/if}}
+                </dl>
+            </li>
+            </ul>
+        </li>
+    </ul>
+</script>
+
+<script id="post_detail_script" type="text/x-jquery-tmpl">
+    <ul class="blockList">
+       <li class="blockList" >
+       <h4>${name}</h4>
+        <ul class="blockList">
+            <li class="blockList">   
+                <dd>url_id:${post_id}</dd>
+                <div class="block"><a href=${post_url}>${post_url}</a></div>
+                <dl>
+                    <dt><span class="seeLabel">post_question:</span></dt>
+                    <dd>${post_question}</dd>
+                </dl>
+            </li>
+            </ul>
+        </li>
+    </ul>
+</script>
+
+<script id=inheritance_script type="text/x-jquery-tmpl">
+ <li>
+    inheritance_tree:
+    <ul>{{each inheritance}}<li>${$index + 1}: <label>${$value}. </label></li>{{/each}}
+    </ul>
+  </li>
+</script>
+
+<script id=code_description_script type="text/x-jquery-tmpl">
+    <ul class="blockList">
+       <li class="blockList" >
+       <h4>Example Code</h4>
+        <ul class="blockList">
+            <li class="blockList">  
+                <pre>${code_text}</pre> 
+                <dt><span class="seeLabel">code_summary:</span></dt>
+                <dd>${code_summary}</dd>
+            </li>
+            </ul>
+        </li>
+    </ul>
+</script>
+
+<br/><br/><br/><br/>
+ <div class="main-title">
+    <div class="text-center">DySDoc3 Search</div>
+        <div class="input-jump center-block">
+            <div class="col-lg">
+                <div class="input-group">
+                    <input type="text" autocomplete="on" class="form-control" onkeydown="keyup_submit(event)" placeholder="enter question...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button"  id="bt1" onclick="jumpClick()">SEARCH
+                        </button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+    </div>
+</div>
+
+<div class="header" style="display:none">
+    <div class="subTitle">java.awt</div>
+    <h2 title="Class Component" class="title">Class Component</h2>
+</div>
+
+<ul id="inheritance">
+</ul>
+
+<div class="description"  style="display:none">
+    <ul class="blockList">
+    <li class="blockList">
+<hr>
+<br>
+<div class="block" id="class_description">
+ 
+ </div>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<div class="details" id="show_method_summary" style="display:none">
+<ul class="blockList">
+<li class="blockList">
+<a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation ">
+<tbody id="method_summary_tbody">
+  
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<!-- ============ METHOD DETAIL ========== -->
+<div class="details" id="show_method_detail" style="display:none">
+<ul class="blockList">
+<li class="blockList">
+<ul class="blockList">
+      <h3>Method Detail</h3> 
+<li class="blockList" id="method_detail">     
+           
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<!-- ============ Post DETAIL ========== -->
+<div class="details" id="show_post" style="display:none">
+<ul class="blockList">
+<li class="blockList">
+<ul class="blockList">
+<h3>Post Detail</h3>   
+<li class="blockList" id="post_detail">
+      
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<!-- ============ CODE EXAMPLE ========== -->
+<div class="details" id="show_code" style="display:none">
+<ul class="blockList">
+<li class="blockList">
+<ul class="blockList">
+<h3>Example Code</h3>   
+<li class="blockList" id="code_description">
+      
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="Graph">
+    <div id="GraphContainer">
+
+    </div>
+
+</div>
+
+</body>
+
+<link rel="stylesheet" type="text/css" href="css/main_page.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/fonts/dejavu.css"> -->
+<script src="js/d3.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.tmpl.js"></script>
+<script src="js/jquery.tmpl.min.js"></script>
+<script src="js/jquery.tmplPlus.js"></script>
+<script src="js/jquery.tmplPlus.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/neo4jGraph.js"></script>
+<script src="js/main_page.js"></script>
+<script src="js/flowPanel.js"></script>
+</html>
